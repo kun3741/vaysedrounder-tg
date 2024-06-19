@@ -1,0 +1,24 @@
+{
+  "name": "rounder-tg",
+  "version": "1.0.0",
+  "description": "Bot can convert your videos into round video messages or audios in voice messages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kun3741/vaysedrounder-tg.git"
+  },
+  "author": "kun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kun3741/vaysedrounder-tg/issues"
+  },
+  "homepage": "https://github.com/kun3741/vaysedrounder-tg#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fluent-ffmpeg": "^2.1.3",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
