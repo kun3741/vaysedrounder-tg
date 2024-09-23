@@ -3,7 +3,10 @@ const TelegramBot = require('node-telegram-bot-api');
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 const path = require('path');
+const express = require("express");  
 
+const app = express();
+const port = process.env.PORT || 3000;
 const token = `${process.env.TOKEN}`;
 const bot = new TelegramBot(token, {
     polling: {
@@ -19,10 +22,12 @@ bot.on("polling_error", (err) => {
 });
 
 bot.onText(/\/start/, async (msg) => {
-    console.log(msg.chat.id, msg.from.first_name)
+    console.log(`[LOG] /start - id ${msg.chat.id}, @${msg.from.username}`)
     await bot.sendMessage(msg.chat.id, `✌️ · Hello, ${msg.from.first_name}!
 I can convert your videos into round video messages or audios in voice messages.
 Send me your video or audio and I will do my job.`);
+
+
 });
 
 bot.on('video', (msg) => {
@@ -123,5 +128,13 @@ bot.on('audio', (msg) => {
         console.error('Error getting file info:', error);
     });
 });
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+  });
+  
+  app.listen(port, () => {
+    console.log(port);
+  });
 
 console.log('Bot started');
